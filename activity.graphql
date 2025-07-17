@@ -1,0 +1,130 @@
+Basic Queries
+1. Fetch All Article Titles
+
+query {
+  nodeArticles(first: 20) {
+    edges {
+      node {
+        title
+      }
+    }
+  }
+}
+
+2. Fetch Article Titles and Body Text
+query {
+  nodeArticles(first:20) {
+    edges {
+      node {
+        title
+        body {
+          value
+          processed
+          format
+          summary
+        }
+      }
+    }
+  }
+}
+
+3. Fetch Only Published Articles
+query {
+  nodeArticles(first: 10) {
+    edges {
+      node {
+        title
+        status
+      }
+    }
+  }
+}
+
+Working with Fields
+
+1. Fetch Article Titles with Created Date
+query {
+  nodeArticles(first:5) {
+    edges {
+      node {
+        title 
+        created {
+          time          
+        }
+      }
+    }
+  }
+}
+
+2. Fetch Article Title with URL Alias
+query {
+  nodeArticles(first:5) {
+    nodes {
+      id
+      title
+      path
+      }
+    }
+}
+
+Relationships and Media
+
+1. Fetch Article with Author Info
+query {
+  nodeProducts(first:5) {
+    nodes {
+      author {
+        name
+        mail
+        roles
+      }
+    }
+  }
+}
+
+2. Fetch Article with Image URL and Alt Text
+query {
+  nodeProducts(first:5) {
+    edges {
+      node {
+      	image1 {
+          url
+          alt
+        }
+      }
+    }
+  }
+}
+
+Nested and Complex Queries
+
+1. Fetch Article with Tags (Taxonomy Terms)
+query {
+  nodeArticles(last:3) {
+    edges {
+      node {
+        id
+        title
+        tags {
+          ... on TermTag {
+            name
+          }
+        }
+       }
+    }
+  }
+}
+
+2. Limit and Sort Articles by Date
+query {
+  nodeArticles(first:5, sortKey:CREATED_AT, reverse:true) {
+    edges {
+      node {
+        title
+        created {
+          time
+        }
+      }
+    }
+  }
+}
