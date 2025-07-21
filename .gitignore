@@ -1,0 +1,32 @@
+# Ignore vendor directory (Composer dependencies)
+vendor/
+
+# Ignore contributed modules/themes/libraries if using Composer
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+
+# Ignore configuration that should not be tracked
+sites/*/settings*.php
+sites/*/services*.yml
+sites/*/files/
+
+# Ignore DDEV local dev environment files
+.ddev/
+
+# Ignore recipes if they are environment-specific or generated
+recipes/
+
+# Ignore Composer's lock file (optional if team uses exact versions)
+# composer.lock
+
+# Ignore backup and temporary files
+*.log
+*.tmp
+*.swp
+*~
+
+# Node.js dependencies (if using frontend tools like gulp, webpack, etc.)
+node_modules/
